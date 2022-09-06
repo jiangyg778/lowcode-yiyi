@@ -1,0 +1,33 @@
+.main {
+  width: 100%;
+  overflow: scroll;
+
+  .box {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .item {
+      display: inline-block;
+      width: 80px;
+      height: 125px;
+      padding: 12px;
+      overflow: hidden;
+      margin: 10px 0;
+      text-align: center;
+      font-size: 12px;
+      border: 1px solid #ccc;
+      transition: box-shadow 0.2s ease, -webkit-box-shadow 0.2s ease;
+      box-shadow: 0 6px 16px 0 rgb(0 0 0 / 15%);
+      border-color: transparent;
+      border-radius: 4px;
+
+      &:hover {
+        cursor: pointer;
+        font-weight: bold;
+        color: #5584ff;
+        border-color: #5584ff;
+      }
+    }
+  }
+}
