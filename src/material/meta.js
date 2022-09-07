@@ -11,7 +11,7 @@ export const meta = [
         configure: {
             props: [
                 {
-                    name: 'name',
+                    name: 'width',
                     display: 'block',
                     title: '宽度',
                     setter: {
@@ -22,9 +22,9 @@ export const meta = [
                     },
                 },
                 {
-                    name: 'demo',
+                    name: 'height',
                     display: 'block',
-                    title: '宽度2',
+                    title: '高度',
                     setter: {
                         componentName: 'StringSetter',
                         props: {

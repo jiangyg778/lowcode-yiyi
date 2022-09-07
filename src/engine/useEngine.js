@@ -9,16 +9,48 @@ const useEngine = () => {
         canvasStore.components.push(cmp);
         setSelectedCmpIndex(canvasStore.components.length - 1)
     }
+
+    //组件排序
+    const updateCmpOrder = (startIndex, endIndex) => {
+        let components = JSON.parse(JSON.stringify(canvasStore.components))
+        const [removed] = components.splice(startIndex, 1);
+        components.splice(endIndex, 0, removed);
+        canvasStore.components = components
+        setSelectedCmpIndex(endIndex)
+    }
+
+    //更新选中组件
+    const updateSelectedCmp = (newStyle, newValue) => {
+        const { components, currentIndex, currentSetterProps } = canvasStore;
+        const selectedCmp = getSelectedCmp()
+        if (newStyle) {
+            components[currentIndex].style = {
+                ...selectedCmp.style,
+                ...newStyle,
+            };
+        }
+        if (newValue !== undefined) {
+            components[currentIndex].value = newValue;
+        }
+        canvasStore.currentSetterProps = { ...currentSetterProps, ...newStyle }
+    };
+
+    //获取当前选中的组件
+    const getSelectedCmp = () => {
+        const { components, currentIndex } = canvasStore;
+        return components[currentIndex];
+    }
+
     //删除组件
     const deleteCmp = () => { }
 
-    // 设置当前选中的组件
+    // 设置当前选中的组件index
     const setSelectedCmpIndex = (index) => {
         canvasStore.currentIndex = index
     };
 
 
-    return { addCmp, deleteCmp, setSelectedCmpIndex }
+    return { addCmp, deleteCmp, setSelectedCmpIndex, updateCmpOrder, updateSelectedCmp, getSelectedCmp }
 
 
 }

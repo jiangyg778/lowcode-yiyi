@@ -1,11 +1,15 @@
-import React from 'react'
 import { Input } from '@alifd/next';
 
 export default function StringSetter(props) {
-  const { placeholder } = props
+  const { props: { placeholder }, value, onChange } = props
+
+  const handleChange = (value) => {
+    onChange(value)
+  }
+
   return (
     <div>
-      <Input placeholder={placeholder} />
+      <Input placeholder={placeholder} onChange={handleChange} value={value} />
     </div>
   )
 }

@@ -19,4 +19,5 @@ export const canvasStore = proxy({
 
     // 当前选中组件的序号
     currentIndex: 0,
+    currentSetterProps: {}
 })
