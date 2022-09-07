@@ -1,4 +1,4 @@
-import MaterialContent from "./material";
+import MaterialContent from "./materialContent";
 
 const area = 'leftArea';
 const LeftPlugin = () => {

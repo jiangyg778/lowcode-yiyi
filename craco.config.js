@@ -1,4 +1,3 @@
-// * 配置完成后记得重启下
 const CracoLessPlugin = require("craco-less");
 const path = require("path");
 const pathResolve = (pathUrl) => path.join(__dirname, pathUrl);
@@ -10,15 +9,14 @@ module.exports = {
         },
     },
     babel: {
-        //用来支持装饰器
-        plugins: [["@babel/plugin-proposal-decorators", { legacy: true }]],
+        plugins: [["@babel/plugin-proposal-decorators", { legacy: true }]],//装饰器
     },
     plugins: [
         {
-            plugin: CracoLessPlugin,
+            plugin: CracoLessPlugin,//用来支持less
             options: {
                 lessLoaderOptions: {
-                    lessOptions: { javascriptEnabled: true },
+                    lessOptions: { javascriptEnabled: true },//用来支持antd的less变量
                 },
                 modifyLessRule: function () {
                     return {
@@ -30,11 +28,11 @@ module.exports = {
                                 loader: "css-loader",
                                 options: {
                                     modules: {
-                                        localIdentName: "[local]_[hash:base64:6]",
+                                        localIdentName: "[local]_[hash:base64:6]",//用来支持css module
                                     },
                                 },
                             },
-                            { loader: "less-loader" },
+                            { loader: "less-loader" },// compiles Less to CSS
                         ],
                     };
                 },

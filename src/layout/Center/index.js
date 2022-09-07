@@ -24,6 +24,7 @@ export default function Center() {
 
     let dragElement = null;
     dragElement = componentsList.components?.map((desc, index) => {
+      console.log(desc, 8888999)
       let Cmp = dynamicCmp[desc.componentName]
       const dragItem = (
         <Draggable key={desc.key} draggableId={desc.key + ''} index={index}>
@@ -37,7 +38,7 @@ export default function Center() {
                   componentsList.currentIndex === index ? styles.selected : styles.unselected
                 )}
               >
-                <Cmp style={{ ...desc.style }} {...desc.configure} />
+                <Cmp style={{ ...desc.style }} {...desc.configure} value={desc.value} />
               </div>
             </div>
           )}

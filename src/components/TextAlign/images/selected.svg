@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/img_coupon_selected</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="card--selected-1" transform="translate(-51.000000, -56.000000)">
+            <g id="icon/img_coupon_selected" transform="translate(51.000000, 56.000000)">
+                <path d="M24,0 L24,22.8 C24,23.4627417 23.4627417,24 22.8,24 L0,24 L0,24 L24,0 Z" id="矩形" fill="#4477EE"></path>
+                <path d="M21.5674216,13.4875698 L17.0317162,20.0994103 C16.7581955,20.5001966 16.1917708,20.5001966 15.9182501,20.0994103 L13.2325784,16.1866499 C13.1507375,16.0666405 13.2325784,15.8990801 13.3725693,15.8990801 L14.3826575,15.8990801 C14.6023356,15.8990801 14.8112451,16.0100322 14.9404674,16.2002359 L16.4739063,18.4373929 L19.8595326,13.5011558 C19.9887549,13.3132164 20.1955107,13.2 20.4173425,13.2 L21.4274307,13.2 C21.5674216,13.2 21.6492625,13.3675603 21.5674216,13.4875698 Z" id="Path" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

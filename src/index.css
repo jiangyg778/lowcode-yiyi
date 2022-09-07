@@ -66,3 +66,6 @@ ul {
 .next-drawer-body{
   padding: 6px !important;
 }
+.next-radio-wrapper {
+  width: 33%;
+}

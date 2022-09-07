@@ -1,13 +1,17 @@
 import React from 'react'
 import { Input } from '@alifd/next';
 import styles from "../index.less";
-export default function YiInput({ style: { width, height }, ...props }) {
-  let newStyle = { ...(width && { width: width + 'px' }), ...(height && { height: height + 'px' }) }
+import { getRealityStyle } from '../../utils';
+
+
+export default function YiInput({ style: { width, height }, value = '', ...others }) {
+  let newStyle = getRealityStyle({ width, height })
   return (
     <div className={styles.main}>
       <Input
         size="large"
         style={{ ...newStyle }}
+        value={value}
       />
     </div>
   )

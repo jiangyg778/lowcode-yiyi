@@ -11,7 +11,12 @@ export default function Right() {
 
   //更新到store
   const changeName = (key, value) => {
-    updateSelectedCmp({ [key]: value })
+    console.log(key, value, 9999);
+    if (key === 'value') {
+      updateSelectedCmp(null, value)
+    } else {
+      updateSelectedCmp({ [key]: value })
+    }
   }
 
   return (
@@ -19,11 +24,11 @@ export default function Right() {
       {components[currentIndex]?.configure?.props?.map((item) => {
         let Cmp = setterCmp[item.setter?.componentName]
         return <div key={item.name} className={styles.content}>
-          <Item label={`${item.title}: `}>
+          <Item label={`${item.title}`}>
             <Cmp
               {...item.setter}
               name={item.name}
-              value={components[currentIndex]?.style[item.name] ?? ''}
+              value={item.name === 'value' ? components[currentIndex]?.value : components[currentIndex]?.style[item.name] ?? ''}
               onChange={(v) => changeName(item.name, v)} />
           </Item>
         </div>

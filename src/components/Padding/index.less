@@ -1,0 +1,81 @@
+.padding-space {
+  display: flex;
+  flex-direction: row;
+}
+.padding-space-item {
+  display: flex;
+  flex-direction: column;
+  margin-right: 16px;
+  position: relative;
+  & + .padding-space-item {
+    margin-right: 0px;
+  }
+  .ballon-bySelf {
+    // position: absolute;
+    // bottom: 0;
+    // right: 0;
+    padding: 8px;
+    position: absolute;
+    bottom: -22px;
+    right: 0;
+    width: 200px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    z-index: 100;
+    word-wrap: break-all;
+    word-wrap: break-word;
+    color: #fff;
+    border: 1px solid transparent;
+    background-color: #1f2633;
+    // 透明度
+    opacity: 0.8;
+    -webkit-box-shadow: 0 4px 16px 0 rgb(0 0 0 / 12%);
+    box-shadow: 0 4px 16px 0 rgb(0 0 0 / 12%);
+    .arrow {
+      position: absolute;
+      display: block;
+      width: 24px;
+      height: 24px;
+      overflow: hidden;
+      background: 0 0;
+      pointer-events: none;
+      bottom: -9px;
+      right: 3px;
+      .arrow-content {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        width: 12px;
+        height: 12px;
+        margin: auto;
+        background-color: #1f2633;
+        border: 1px solid transparent;
+        pointer-events: auto;
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+.label {
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  text-align: start;
+}
+.panel-open {
+  height: 140px;
+  transition: height 0.2s;
+  // transition: opacity 0.1s;
+  opacity: 1;
+}
+.panel-close {
+  height: 0;
+  transition: height 0.2s;
+  // transition: opacity 0.1s;
+  opacity: 0;
+}
