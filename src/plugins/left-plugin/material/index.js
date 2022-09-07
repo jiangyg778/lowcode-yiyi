@@ -1,7 +1,7 @@
 import React from 'react'
 import useEngine from '../../../engine/useEngine';
 import styles from "./index.less";
-import { meta } from '@/material/meta.js';
+import { meta } from '@/material/index.js';
 
 export default function MaterialContent({ children }) {
     const { addCmp } = useEngine();

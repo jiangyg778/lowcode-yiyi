@@ -1,4 +1,4 @@
-import StringSetter from './components/string-setter';
+import StringSetter from './string-setter';
 /**
  * 控制器
  */

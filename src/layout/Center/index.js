@@ -1,12 +1,11 @@
 import { canvasStore } from "../../store";
 import styles from "./index.less";
 import { useSnapshot, subscribe } from 'valtio'
-import { YiInput } from '../../material/components';
+import { dynamicCmp } from '../../material/index.js';
 import classNames from "classnames";
 import useEngine from "../../engine/useEngine";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 //动态组件
-let dynamicCmp = { YiInput }
 
 export default function Center() {
   const componentsList = useSnapshot(canvasStore)
