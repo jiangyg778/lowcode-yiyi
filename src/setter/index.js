@@ -5,6 +5,7 @@ import BorderTypeSetter from './border-type-setter';
 import AutoRadiusSetter from './auto-radius-setter';
 import TextAlignSetter from './text-align-setter';
 import BooleanSetter from './boolean-setter';
+import RichTextSetter from './rich-text-setter';
 
 
 /**
@@ -17,5 +18,6 @@ export const setterCmp = {
     BorderTypeSetter,
     AutoRadiusSetter,
     TextAlignSetter,
-    BooleanSetter
+    BooleanSetter,
+    RichTextSetter,
 }

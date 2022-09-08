@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button } from '@alifd/next';
 import { getRealityStyle } from '../../utils';
+import styles from "../index.less";
+
 export default function YiButton({ value = 'cancel', style: { backgroundColor, padding, border, radius, textAlign = 'center', fullWidth = false }, ...others }) {
     let newStyle = getRealityStyle({ backgroundColor })
     let paddingStyle = {
@@ -17,7 +19,7 @@ export default function YiButton({ value = 'cancel', style: { backgroundColor, p
     console.log(textAlign, 33344)
 
     return (
-        <div style={{ textAlign }}>
+        <div style={{ textAlign }} className={styles.main}>
             <Button style={{ height: '100%', ...(fullWidth && { width: "100%" }), ...newStyle, ...paddingStyle, ...borderStyle, }}>{value}</Button>
         </div>
     )

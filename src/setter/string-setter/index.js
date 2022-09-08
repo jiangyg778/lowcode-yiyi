@@ -1,4 +1,5 @@
 import { Input } from '@alifd/next';
+import styles from "./index.less";
 
 export default function StringSetter(props) {
   const { props: { placeholder }, value, onChange } = props
@@ -8,8 +9,8 @@ export default function StringSetter(props) {
   }
 
   return (
-    <div>
-      <Input placeholder={placeholder} onChange={handleChange} value={value} />
+    <div className={styles.main}>
+      <Input placeholder={placeholder} onChange={handleChange} value={value} style={{ width: 260 }} />
     </div>
   )
 }
