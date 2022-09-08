@@ -10,8 +10,8 @@ const LeftPlugin = () => {
         align: 'start',
         content: <MaterialContent />,
         props: {
-            type: 'icon',
-            value: 'set',
+            icon: 'set',
+            description: '变量绑定1',
         },
     });
 
@@ -22,8 +22,8 @@ const LeftPlugin = () => {
         name: 'variableBindDialog',
         align: 'end',
         props: {
-            type: 'text',
-            value: '测试',
+            icon: 'atm',
+            description: '变量绑定2',
         },
         content: 456
     });
