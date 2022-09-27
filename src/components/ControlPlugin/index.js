@@ -11,7 +11,9 @@ export default function ControlPlugin({ value, onChange }) {
         setCurrentNode(i?.content)
         onChange(i)
     }
-    const handleOpen = (where) => {
+
+    // leftPlugin样式展示
+    const showArea = (where) => {
         return value?.map((i, index) => {
             const { type, value, attrs = {} } = i?.props || {};
             if (i.align === where) {
@@ -21,19 +23,21 @@ export default function ControlPlugin({ value, onChange }) {
                         <img src={value} alt='' style={{ height: 30 }} {...attrs} key={index} />
                     )
                 } else if (type === "icon") {
-                    // 文字或icon
+                    // icon
                     return (
                         <div className={styles.cmp} onClick={() => setShowSide(!showSide)} key={index}>
                             <span onClick={() => { handleClick(i) }}>{<Icon type={value} {...attrs} />}</span>
                         </div>
                     )
                 } else if (type === "text") {
+                    // 文本
                     return (
                         <div className={styles.cmp} onClick={() => setShowSide(!showSide)} key={index}>
                             <span onClick={() => { handleClick(i) }} {...attrs}>{value}</span>
                         </div>
                     )
                 } else if (type === "button") {
+                    // 按钮
                     return (
                         <div className={styles.cmp} onClick={() => setShowSide(!showSide)} key={index}>
                             <Button onClick={() => { handleClick(i) }} {...attrs}>{value}</Button>
@@ -49,11 +53,13 @@ export default function ControlPlugin({ value, onChange }) {
     }
     return (
         <>
+            {/* left顶部 */}
             <div className="start">
-                {handleOpen('start')}
+                {showArea('start')}
             </div>
+            {/* left底部 */}
             <div className="end">
-                {handleOpen('end')}
+                {showArea('end')}
             </div>
             <Drawer
                 title="标题"

@@ -7,7 +7,7 @@ const useEngine = () => {
     const addCmp = (_cmp) => {
         const cmp = { ..._cmp, key: getOnlyKey() };
         canvasStore.components.push(cmp);
-        setSelectedCmpIndex(canvasStore.components.length - 1)
+        setSelectedCmpIndex(cmp.key)
     }
 
     //组件排序
@@ -23,14 +23,17 @@ const useEngine = () => {
     const updateSelectedCmp = (newStyle, newValue) => {
         const { components, currentIndex, currentSetterProps } = canvasStore;
         const selectedCmp = getSelectedCmp()
+        let target = components.find(i => i.key === currentIndex)
+        // 更新样式
         if (newStyle) {
-            components[currentIndex].style = {
-                ...selectedCmp.style,
+            target.style = {
+                ...selectedCmp?.style || {},
                 ...newStyle,
             };
         }
+        // 更新值
         if (newValue !== undefined) {
-            components[currentIndex].value = newValue;
+            target.value = newValue;
         }
         canvasStore.currentSetterProps = { ...currentSetterProps, ...newStyle }
     };
@@ -38,7 +41,7 @@ const useEngine = () => {
     //获取当前选中的组件
     const getSelectedCmp = () => {
         const { components, currentIndex } = canvasStore;
-        return components[currentIndex];
+        return components.find(i => i.key === currentIndex)
     }
 
     //删除组件

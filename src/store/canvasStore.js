@@ -14,8 +14,17 @@ export const canvasStore = proxy({
     },
     // 组件 compoents
     components: [],
-
     // 当前选中组件的序号
     currentIndex: 0,
     currentSetterProps: {}
 })
+
+// const schema = {
+//     componentName: 'Page',
+//     css: '',
+//     props: {
+//         children: '',//内容
+//         style: {},//样式
+//     },
+//     children: []
+// }

@@ -5,70 +5,51 @@ import { dynamicCmp } from '../../material/index.js';
 import classNames from "classnames";
 import useEngine from "../../engine/useEngine";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { getCanvasPosition } from "../../utils";
+import { useCallback } from 'react'
+import EditLine from "../../components/EditLine";
 //动态组件
-
 export default function Center() {
   const componentsList = useSnapshot(canvasStore)
-  const { setSelectedCmpIndex, updateCmpOrder } = useEngine()
+  const { addCmp, getSelectedCmp } = useEngine()
 
   subscribe(canvasStore, () => {
     console.log(canvasStore, 33333);
   })
 
 
-  const onMouseDown = (index) => {
-    setSelectedCmpIndex(index)
+  // 拖动进容器触发
+  const onDrop = (e) => {
+    console.log(getSelectedCmp(), 55555);
+    let data = getCanvasPosition(e,)
+    addCmp(data)
   }
 
-  const renderDragItem = () => {
-
-    let dragElement = null;
-    dragElement = componentsList.components?.map((desc, index) => {
-      console.log(desc, 8888999)
-      let Cmp = dynamicCmp[desc.componentName]
-      const dragItem = (
-        <Draggable key={desc.key} draggableId={desc.key + ''} index={index}>
-          {(provided) => (
-            <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-              <div
-                key={index}
-                onMouseDown={() => onMouseDown(index)}
-                className={classNames(
-                  styles.editStyle,
-                  componentsList.currentIndex === index ? styles.selected : styles.unselected
-                )}
-              >
-                <Cmp style={{ ...desc.style }} {...desc.configure} value={desc.value} />
-              </div>
-            </div>
-          )}
-        </Draggable>
-      );
-      return dragItem;
-    });
-    return dragElement;
-  };
-
-  const handleEnd = (res) => {
-    let start = res.source.index
-    let end = res.destination.index
-    updateCmpOrder(start, end)
-  }
   return (
     <div id="center" className={styles.main} tabIndex="0">
-      <div className={styles.nav}>
+      <div
+        className={styles.nav}
+      >
+        撤销
       </div>
-      <DragDropContext onDragEnd={handleEnd}>
-        <Droppable droppableId="id">
-          {(provided) => (
-            <div className={styles.canvas} ref={provided.innerRef} {...provided.droppableProps}>
-              {renderDragItem()}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
-
+      <div
+        id="canvas"
+        className={styles.canvas}
+        onDrop={onDrop}
+        onDragOver={(e) => e.preventDefault()}
+      >
+        {/* 拉升拖动线 */}
+        {componentsList.currentIndex && (
+          <EditLine selectedIndex={componentsList.currentIndex} zoom={100} />
+        )}
+        {/* 画布组件 */}
+        {componentsList.components?.map((desc, index) => {
+          let Cmp = dynamicCmp[desc.componentName]
+          return (
+            <Cmp style={{ ...desc.style }} {...desc.configure} key={desc.key} />
+          )
+        })}
+      </div>
     </div>
-  );
+  )
 }

@@ -55,7 +55,6 @@ class RichTextSetter extends React.Component {
             mode: 'default',// 或 'simple' 参考下文
 
         })
-        console.log(toolbar.getConfig().toolbarKeys, 4444)
 
     }
 

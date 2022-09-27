@@ -13,5 +13,6 @@ import YiText from './yi-text-material/index';
 
 //导出物料配置信息
 export const meta = [inputMeta, buttonMeta, textMeta];
+
 //导出物料组件
 export const dynamicCmp = { YiInput, YiButton, YiText } 

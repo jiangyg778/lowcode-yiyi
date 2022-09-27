@@ -8,7 +8,7 @@ import useEngine from '@/engine/useEngine';
 export default function Right() {
   const { currentIndex, components } = useSnapshot(canvasStore);
   const { updateSelectedCmp } = useEngine();
-
+  console.log(currentIndex, components, 33334411)
   //更新到store
   const changeName = (key, value) => {
     console.log(key, value, 9999);
@@ -21,14 +21,14 @@ export default function Right() {
 
   return (
     <div className={styles.main}>
-      {components[currentIndex]?.configure?.props?.map((item) => {
+      {components.find(i => i.key === currentIndex)?.configure?.props?.map((item) => {
         let Cmp = setterCmp[item.setter?.componentName]
         return <div key={item.name} className={styles.content}>
           <Item label={`${item.title}`}>
             <Cmp
               {...item.setter}
               name={item.name}
-              value={item.name === 'value' ? components[currentIndex]?.value : components[currentIndex]?.style[item.name] ?? ''}
+              value={item?.name === 'value' ? item.value : ''}
               onChange={(v) => changeName(item.name, v)} />
           </Item>
         </div>

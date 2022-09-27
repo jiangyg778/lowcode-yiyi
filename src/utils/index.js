@@ -27,3 +27,35 @@ export function getRealityStyle(p) {
 export function isObject(obj) {
     return Object.prototype.toString.call(obj) === '[object Object]';
 }
+
+
+export const getCanvasPosition =
+    (e) => {
+
+        const endX = e.pageX;
+        const endY = e.pageY;
+
+        let dragCmp = e.dataTransfer.getData("drag-cmp");
+        if (!dragCmp) {
+            return;
+        }
+        dragCmp = JSON.parse(dragCmp);
+        const { style } = dragCmp;
+
+        const canvasDOMPos = {
+            top: 130,
+            left: document.body.clientWidth / 2 - 450,
+        };
+
+        const startX = canvasDOMPos.left;
+        const startY = canvasDOMPos.top;
+
+        let disX = endX - startX;
+        let disY = endY - startY;
+
+        style.left = disX - dragCmp.style.width / 2;
+        style.top = disY - dragCmp.style.height / 2;
+
+        return dragCmp;
+    }
+
